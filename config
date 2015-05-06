@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = ssh://root@repo:2222/var/git/twig_codeigniter.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
