@@ -63,11 +63,18 @@
              // set the view and cache paths
 			$this->load_paths();
 
+
 			// load environment- from twig
 			$loader = new Twig_Loader_Filesystem($this->template_dir, $this->cache_dir);
 			$this->_twig_env = new Twig_Environment($loader, array(
-					'cache' => $this->cache_dir,
+					'cache' => $this->cache_dir, 'debug' => true,
 					'auto_reload' => TRUE));
+
+
+            require_once(APPPATH.'third_party/customExtension.php');
+
+            $this->_twig_env->addExtension(new Twig_Extension_Debug());
+            $this->_twig_env->addExtension(new customExtension());
 			$this->ci_function_init();
 		}
 
@@ -82,6 +89,7 @@
 			$this->_ci->config->load(self::TWIG_CONFIG_FILE); // load config file -  they cna
 			// set include path for twig
 			ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . APPPATH . 'third_party/Twig/lib/Twig');
+			ini_set('include_path', ini_get('include_path') . PATH_SEPARATOR . APPPATH . 'third_party/customExtension.php');
 		}
 
 		/**
@@ -137,7 +145,7 @@
 		 */
 		public function load($template, $data = array())
 		{
-			$template = $this->_twig_env->loadTemplate($template);
+            $template = $this->_twig_env->loadTemplate($template);
 			$this->_ci->output->set_output($template->render($data));
 		}
 
@@ -155,6 +163,9 @@
 		{
 			$this->_twig_env->addFunction($name, $function);
 		}
+        
+
+        
 
 		/**
 		 * Initialize standard CI functions
@@ -195,6 +206,7 @@
 			$this->_twig_env->addFunction('set_checkbox', new Twig_Function_Function('set_checkbox'));
 			$this->_twig_env->addFunction('set_radio', new Twig_Function_Function('set_radio'));
 			$this->_twig_env->addFunction('form_open_multipart', new Twig_Function_Function('form_open_multipart'));
+
 
 
 		}

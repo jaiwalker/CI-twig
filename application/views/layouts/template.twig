@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+
+    <!-- Title -->
+    <title>{{ foo }}</title>
+
+    <!-- Favicon -->
+
+    <link rel="icon" href="favicon.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ 'assets/css/app.min.css'}}">
+
+    <!-- Typekit Fonts -->
+
+
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Quicksand:400,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Typekit -->
+    <script src="//use.typekit.net/ryr8dxm.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+    <!-- Icon libraries -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Modernizr -->
+    <script src="{{ 'assets/js/modernizr.min.js' }}"></script>
+
+    <!-- jQuery -->
+    <script src="{{ 'js/jquery.min.js' | asset  }}"></script>
+
+</head>
+<body id="csstyle">
+
+    <!-- Main content (injected from views) -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+
+</body>
+</html>
